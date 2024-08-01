@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Task {
+  como      String?
+  createdAt DateTime       @default(now())
+  file      Json?
+  id        String         @id @default(cuid())
+  oQue      String?
+  phase     EnumTaskPhase?
+  quando    DateTime?
+  updatedAt DateTime       @updatedAt
+}
+
+enum EnumTaskPhase {
+  Option1
+}
